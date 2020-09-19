@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="badge badge-primary text-wrap" style="width: 6rem;">
+        Ejercicio 01
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-4">
+            <p>a. Modificar el contenido (texto) del párrafo</p>
+            <div>
+                <button class="btn btn-outline-danger" onclick="mostrar()">Mostrar Texto</button>
+                <br/>
+                <p id="texto" class="border">...</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <p>b. Mostrar el texto que se escribe en la entrada dentro del párrafo</p>
+            <div>
+                <label for="nombre">Texto</label>
+                <input type="text" name="nombre" id="nombre" value="">
+                <div><button class="btn btn-outline-warning" onclick="mostrarTexto2()">Mostrar Texto</button></div>
+                <p id="texto2" class="border">....</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <p>c. Modificar la imagen: Apagado/Encendido</p>
+            <div>
+                <button class="btn btn-outline-secondary" onclick="Cambiar()">Cambiar</button>
+                <img id="imagen" src="imagen/pic_bulboff.gif" alt="Apagado">
+            </div>
+          </div>
+        </div>
+      
+      <hr>
+      <div class="row">
+        <div class="col-4">
+          <p>d. Lanzar Diálogo Alerta</p>
+          <div>
+              <button class="btn btn-outline-primary" onclick="Alerta()">Mostrar Alerta</button>
+              <br/>
+              <p id="tAlerta" class="border">...</p>
+          </div>
+        </div>
+        <div class="col-4">
+          <p>e. Mostrar Diálogo Confirmación</p>
+          <div>
+            <button class="btn btn-outline-dark" onclick="confirmar()">Mostrar Confirmación</button>
+            <br/>
+            <p id="tConfirmación" class="border">...</p>
+          </div>
+        </div>
+        <div class="col-4">
+          <p>f. Mostrar Diálogo Réplica</p>
+          <div>
+            <button class="btn btn-outline-success" onclick="Replica()">Mostrar Réplica</button>
+            <br/>
+            <p id="tReplica" class="border">...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        ///complete el código aquí
+        //a.)
+        function mostrar(){
+          var mostrar=document.getElementById('texto');
+            mostrar.innerHTML='Luis Fernando Tacca Condori';
+        }
+        //b.)
+        function mostrarTexto2(){
+          var mostrar2=document.getElementById('texto2'),
+            mostrarT2=document.getElementById('nombre').value;
+            mostrar2.innerHTML=mostrarT2;
+        }
+        //c.)
+        var count=true;
+        function Cambiar(){
+        	
+          var img=document.getElementById('imagen');
+              if(count===true) {
+                  img.src="imagen/pic_bulbon.gif";
+                  img.alt="Encendido";
+                  count=false;
+                  console.log('encendido')
+              }else {
+                  img.src="imagen/pic_bulboff.gif";
+                  count=true;
+                  console.log('apagado')
+              }
+        } 
+        //d.)
+        function Alerta() {
+          var text=document.getElementById('tAlerta');
+          alert("Este es un diálogo de alerta");
+          text.innerHTML="Se mostró un diálogo Alerta";
+        }
+        //e.)
+        function confirmar() {
+          var opt=confirm('¿Estas de acuerdo con cerrar este diálogo?');
+          var config=document.getElementById('tConfirmación');
+          if (opt==true) {
+            config.innerHTML="El usuario eligio Aceptar";
+          }else if (opt==false) {
+            config.innerHTML="El usuario eligio Cancelar";
+          } 
+        }
+        //f.)
+        function Replica() {
+          var name = prompt("¿Puedes dejarnos un mensaje?", "");
+          var most=document.getElementById("tReplica");
+          if (name != null) {
+            most.innerHTML ="El usuario escribió " + name
+          }else{
+            most.innerHTML ="El usuario canceló";
+          }
+        }
+    </script>
+</body>
+</html>

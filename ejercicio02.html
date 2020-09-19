@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo02.css">
+</head>
+<body>
+    <div class="badge badge-primary text-wrap" style="width: 6rem;">
+        Ejercicio 02
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <p>a. Modificar el estilo: Color</p>
+                <div>
+                    <p> Fondo: 
+                        <button class="rojo" onclick="Colorbg('rojo')"></button>
+                        <button class="azul" onclick="Colorbg('azul')"></button>
+                        <button class="verde" onclick="Colorbg('verde')"></button>
+                        <button class="amarillo" onclick="Colorbg('amarillo')"></button>
+                    </p>
+                    <div id="d1"></div>
+                    <p> Borde:
+                        <button class="negro" onclick="ColorBorder('naranja')"></button>
+                        <button class="blanco" onclick="ColorBorder('blanco')"></button>
+                        <button class="violeta" onclick="ColorBorder('violeta')"></button>
+                        <button class="rosado" onclick="ColorBorder('rosado')"></button>
+                    </p>
+                </div>
+            </div>
+            <div class="col-6">
+                <p>b. Modificar el estilo: Opacidad</p>
+                <div>
+                    <img src="imagen/machupicchu.jpg" alt="Machupicchu">
+                </div>
+                <br/>
+                <p>
+                    <button class="btn btn-dark btn-lg" onclick="transform('opacar')">Opacar</button>
+                    <button class="btn btn-light btn-lg" onclick="transform('aclarar')">Aclarar</button>
+                </p>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <p>c. Modificar el estilo: Ocultar</p>
+                <div class="alert alert-success" role="alert">
+                    Este mensaje desaparecerá...
+                    <button type="button" class="close" id="close" data-dismiss="alert" aria-label="Close" onclick="ocultar()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-6">
+                <p>d. Modificar el estilo: Aparecer</p>
+                <div><button class="btn btn-danger" onclick="MostrarModal('mostrar')">Mostrar Modal</button></div>
+                <!--Modal-->
+                <div class="modal fade" id="modal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Modal Ejercicio 02</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="MostrarModal('ocultar')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Este modal es controlado por JS
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" onclick="MostrarModal('ocultar')">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!--Fin Modal-->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //Escriba aquí
+    //a.)fondo
+    function Colorbg(btn) {
+        var bg=document.getElementById('d1');
+        switch (btn) {
+            case 'rojo': bg.style.background='#FC0303'; break;
+            case 'azul': bg.style.background='blue'; break;
+            case 'verde': bg.style.background='green'; break;
+            case 'amarillo': bg.style.background='yellow'; break;
+        }
+    }
+    //a.)borde
+    function ColorBorder(opt) {
+        var Cborder=document.getElementById('d1');
+        switch (opt) {
+            case 'naranja': Cborder.style.borderColor='orange'; break;
+            case 'blanco': Cborder.style.borderColor='white'; break;
+            case 'violeta': Cborder.style.borderColor='#CF63C7'; break;
+            case 'rosado': Cborder.style.borderColor='pink'; break;
+        }
+    }
+    //b:)
+    function transform(elec) {
+        var cambiar=document.getElementsByTagName('img');
+        switch (elec) {
+            case 'aclarar':
+                cambiar[0].style.opacity=0.8;
+                break;
+            case 'opacar':
+                cambiar[0].style.opacity=1.0;
+                break;
+        }
+    }
+    //c:)
+    function ocultar() {
+        var ocult=document.getElementsByClassName('alert');
+        ocult[0].style.display ="none";
+        console.log(ocult);
+    }
+    //d:)
+    function MostrarModal(selec) {
+        var mostrar=document.getElementById('modal');
+        switch (selec) {
+            case 'mostrar':
+                mostrar.style.display='block';
+                mostrar.className='modal fade show';
+                break;
+            case 'ocultar':
+                mostrar.style.display='none';
+                mostrar.className='modal fade';
+                break;
+        }
+    }
+</script>
+</body>
+</html>
